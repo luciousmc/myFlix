@@ -4,8 +4,16 @@ import './Banner.css';
 function Banner() {
 
   const truncate = (string, n) => {
-    return string?.length > n ? string.substr(0, n - 1) + '...' : string;
+    if(!string) return;
+
+    if (string.length > n) {
+      const newStr = string.substr(0, n - 1) + '...';
+      return newStr;
+    }
+    return string;
   }
+
+
 
   return (
     <section
