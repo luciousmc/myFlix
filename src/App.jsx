@@ -6,18 +6,23 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
+import Login from './pages/Login';
 
 function App() {
+  const user = null;
 
   return (
     <div className="app">
-
       <Router>
-        <Switch>
-          <Route exact path='/'>
-            <HomeScreen />
-          </Route>
-        </Switch>
+        {!user ? (
+          <Login />
+        ) : (
+          <Switch>
+            <Route exact path='/'>
+              <HomeScreen />
+            </Route>
+          </Switch>
+        )}
       </Router>
     </div>
   )
