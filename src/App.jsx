@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import HomeScreen from './HomeScreen';
+import HomeScreen from './pages/HomeScreen';
 import {
   BrowserRouter as Router,
   Switch,
