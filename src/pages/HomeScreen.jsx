@@ -36,11 +36,6 @@ function HomeScreen() {
         title='DOCUMENTARIES'
         fetchURL={requests.fetchDocumentaries}
       />
-      <Row
-        title='NETFLIX ORIGINALS'
-        fetchURL={requests.fetchNetflixOriginals}
-        isLargeRow
-      />
 
     </div>
   )
