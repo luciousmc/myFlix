@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Login.css';
+import SignupScreen from './SignupScreen';
 
 function Login() {
+  const [signIn, setSignIn] = useState(false);
+
   return (
     <div className='loginScreen'>
       <div className="loginScreen__background">
@@ -12,6 +15,7 @@ function Login() {
         />
 
         <button
+          onClick={() => setSignIn(true)}
           className='loginScreen__button'
         >
           Sign in
@@ -21,23 +25,32 @@ function Login() {
       </div>
 
       <div className="loginScreen__body">
-        <>
-          <h1>Unlimited films, TV programms and more.</h1>
-          <h2>Watch anywhere. Cancel at anytime!</h2>
-          <h3>Ready to watch? Enter your email to create an account and start your experience!</h3>
+        {signIn ? (
+          <SignupScreen />
+        ) : (
+          <>
+            <h1>Unlimited films, TV programms and more.</h1>
+            <h2>Watch anywhere. Cancel at anytime!</h2>
+            <h3>Ready to watch? Enter your email to create an account and start your experience!</h3>
 
-          <div className="loginScreen__input">
-            <form>
-              <input
-                type="email"
-                name=""
-                id=""
-                placeholder="Email Address"
-              />
-              <button className="loginScreen__getStarted">GET STARTED</button>
-            </form>
-          </div>
-        </>
+            <div className="loginScreen__input">
+              <form>
+                <input
+                  type="email"
+                  name=""
+                  id=""
+                  placeholder="Email Address"
+                />
+                <button
+                  onClick={() => setSignIn(true)}
+                  className="loginScreen__getStarted"
+                >
+                  GET STARTED
+                </button>
+              </form>
+            </div>
+          </>
+        )}
       </div>
     </div>
   )
