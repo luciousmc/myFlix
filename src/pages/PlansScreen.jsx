@@ -18,11 +18,12 @@ function PlansScreen() {
         .collection('subscriptions')
         .get().then((querySnapshot) => {
           querySnapshot.forEach((subscription) => {
-            console.log({subscription})
+            const { role, current_period_end, current_period_start } = subscription.data();
+            
             setSubscription({
-              role: subscription.data().role,
-              current_period_end: subscription.data().current_period_end.seconds,
-              current_period_start: subscription.data().current_period_start.seconds
+              role,
+              current_period_end: current_period_end.seconds,
+              current_period_start: current_period_start.seconds
             })
           })
         })
@@ -76,6 +77,11 @@ function PlansScreen() {
 
   return (
     <div className='plansScreen'>
+      {subscription && (
+        <p>
+          Renewal date: {new Date(subscription?.current_period_end * 1000).toLocaleDateString()}
+        </p>
+      )}
       {Object.entries(products).map(([productId, productData]) => {
         // TODO: Check if user subscription is active
 
